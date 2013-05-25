@@ -20,9 +20,13 @@ users=`awk  '{print $1}' $userfile`
 for user in $users
 do
     password=`grep $user $userfile | awk '{print $2}'`
-    useradd -g bys $user
+    userid=`echo "$user" | cut -b 3-5`
+    userid=2$userid
+    #userid=$((2000+$userid))
+    useradd -g bys -u $userid $user
+    
 
     #echo "$password\n$user"
-    echo "useradd $user"
+    echo "useradd $user $userid"
 done 
 
