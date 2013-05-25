@@ -20,7 +20,7 @@ users=`awk  '{print $1}' $userfile`
 for user in $users
 do
     password=`grep $user $userfile | awk '{print $2}'`
-    useradd -g ss $user
+    useradd -g bys $user
 
     #echo "$password\n$user"
     echo "useradd $user"
